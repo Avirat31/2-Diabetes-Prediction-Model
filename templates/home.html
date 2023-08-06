@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles1.css') }}"
+
+</head>
+
+<body>
+
+  <div class="background-image">
+  </div>
+    
+
+    
+  <div class="container","text-bg-blue" >
+    <h1 class="text-bg-blue">Diabetes Prediction Model</h1>
+
+    <p class="text-blue", style = "font-size: 20px;">This model predicts whether a patient is diabetic or not based on the following attributes:</p>
+  
+    <ul class="text-blue", style = "font-size: 20px;">
+      <li>Pregnancies: Number of times pregnant</li>
+      <li>Glucose: Plasma glucose concentration a 2 hours in an oral glucose tolerance test</li>
+      <li>BloodPressure: Diastolic blood pressure (mm Hg)</li>
+      <li>SkinThickness: Triceps skin fold thickness (mm)</li>
+      <li>Insulin: 2-Hour serum insulin (mu U/ml)</li>
+      <li>BMI: Body mass index (weight in kg/(height in m)^2)</li>
+      <li>DiabetesPedigreeFunction: Diabetes pedigree function</li>
+      <li>Age: Age (years)</li>
+    </ul>
+  
+    <p class="text-blue", style = "font-size: 20px;">The model was trained on a dataset of 768 patients, and it has an accuracy of 77%. </p>
+  
+    <p class="text-blue", style = "font-size: 20px;">The model is a logistic regression model, which is a type of statistical model that is used to predict the probability of an event occurring. In this case, the event is whether a patient is diabetic or not.</p>
+  
+    <p class="text-blue", style = "font-size: 20px;">The model is a valuable tool for healthcare professionals, as it can help them to identify patients who are at risk of developing diabetes. This can help to prevent diabetes from developing, or to catch it early so that it can be treated effectively.</p>
+  </div>
+
+ <div class="login">
+	<h1>Diabetes Prediction</h1>
+  <form action="{{ url_for('predict_datapoint')}}" method="post">
+    <input type="text" name="Pregnancies" placeholder="Pregnancies" required="required" /><br>
+    <input type="text" name="Glucose" placeholder="Glucose" required="required" /><br>
+    <input type="text" name="BloodPressure" placeholder="BloodPressure" required="required" /><br>
+    <input type="text" name="SkinThickness" placeholder="SkinThickness" required="required" /><br>
+    <input type="text" name="Insulin" placeholder="Insulin" required="required" /><br>
+    <input type="text" name="BMI" placeholder="BMI" required="required" /><br>
+    <input type="text" name="DiabetesPedigreeFunction" placeholder="DiabetesPedigreeFunction" required="required" /><br>
+    <input type="text" name="Age" placeholder="Age" required="required" /><br>
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+  </form>
+
+  <br>
+  <br>
+
+  {% if result %}
+    <h1>Person is: {{result}}</h1>
+  {% endif %}
+</div>
+
+
+</body>
+</html>
